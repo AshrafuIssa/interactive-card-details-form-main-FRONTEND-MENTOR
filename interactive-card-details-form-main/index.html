@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive card details form</title>
+
+  <style>
+    body{
+      padding: 0;
+      margin: 0;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: Space Grotesk;
+    }
+    .column {
+      float: left;
+      width: 50%;
+    }
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .form{
+      margin-top: 300px;
+      margin-bottom: 50px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: Space Grotesk;
+    }
+    .input{
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-right: 130px;
+      padding-left: 10px;
+      border: 1px solid gray;
+      border-radius: 10px;
+    }
+    .date{
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      width: 20px;
+      border: 1px solid gray;
+      border-radius: 10px;
+    }
+    .cvc{
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-right: 20px;
+      padding-left: 10px;
+      border: 1px solid gray;
+      border-radius: 10px;
+    }
+    .button{
+      padding-top: 15px;
+      padding-bottom: 15px;
+      padding-left: 120px;
+      padding-right: 120px;
+      background-color: hsl(278, 68%, 11%);
+      color: white;
+      border: 1px solid gray;
+      border-radius: 10px;
+    }
+    .image{
+      height: 100%;
+      position: relative;
+      top: 0px;
+      left: 0px;
+    }
+    .card-front{
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      margin-top: 130px;
+      margin-left: 60px;
+    }
+    .card-back{
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      margin-top: 410px;
+      margin-left: 130px;
+    }
+    .card-number{
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      margin-top: 280px;
+      margin-left: 110px;
+      color: white;
+      font-size: xx-large;
+    }
+    .card-name{
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      margin-top: 330px;
+      margin-left: 110px;
+      color: white;
+      font-size: medium;
+    }
+    .card-date{
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      margin-top: 330px;
+      margin-left: 400px;
+      color: white;
+      font-size: medium;
+    }
+    .slash{
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      margin-top: 330px;
+      margin-left: 420px;
+      color: white;
+      font-size: medium;
+    }
+    .yy{
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      margin-top: 330px;
+      margin-left: 430px;
+      color: white;
+      font-size: medium;
+    }
+    .card-cvc{
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      margin-top: 520px;
+      margin-left: 500px;
+      color: white;
+      font-size: medium;
+    }
+    .error{
+      visibility: hidden;
+      margin: 0;
+    }
+    .p1{
+      color: purple;
+      font-size: xx-large;
+    }
+    .p2{
+      font-size: large;
+    }
+    .thanks{
+      text-align: center;
+      display: none;
+    }
+    .playMe{
+      margin-top: 300px;
+      margin-bottom: 50px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: Space Grotesk;
+    }
+
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <div class="row">
+    <div class="column background-image">
+      <img src="images/bg-main-desktop.png" class="image">
+    </div>
+  
+    <div class="column">
+      <form class="form js-form">
+        <div>
+        <label for="cardholder-name">CARDHOLDER NAME</label><br>
+        <input type="text" class="js-name-input input" placeholder="e.g Jane Appleseed"
+        ><br>
+        <p class="js-name-error error">error message</p><br>
+      </div>
+
+      <div>
+        <label for="card-number">CARD NUMBER</label><br>
+        <input type="tel" class="js-card-number input" placeholder="e.g 1234 5678 9123 0000"><br>
+        <p class="js-number-error error">error message</p><br>
+      </div>
+
+      <div>
+        <label for="exp-date(mm/yy)">EXP-DATE(MM/YY)</label>
+        <label for="cvc">CVC</label><br>
+        <input type="tel" class="js-mm-date date" placeholder="MM"> <input type="tel" class="js-yy-date date" placeholder="YY">
+        <input type="tel" class="js-cvc cvc" placeholder="e.g 123">
+        <p class="js-mm-error error">error message</p>
+      </div>
+      <div><p class="js-yy-error error">error message</p><br></div>
+
+      <div><button class="js-button button" onclick="sumitForm();">Confirm</button></div>
+      </form>
+    </div>
+  </div>
+  <img src="images/bg-card-front.png" class="card-front">
+  <img src="images/bg-card-back.png" class="card-back">
+
+  <p class="card-number">0000 0000 0000 0000</p>
+  <p class="js-card-name card-name">Jane Appleseed</p>
+  <p class="card-date">00</p><p class="slash">/</p><p class="yy">00</p>
+  <p class="card-cvc">000</p>
+
+  <div class="thanks">
+    <svg width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="40" fill="url(#a)"/><path d="M28 39.92 36.08 48l16-16" stroke="#fff" stroke-width="3"/><defs><linearGradient id="a" x1="-23.014" y1="11.507" x2="0" y2="91.507" gradientUnits="userSpaceOnUse"><stop stop-color="#6348FE"/><stop offset="1" stop-color="#610595"/></linearGradient></defs></svg>
+    <p class="p1">THANK YOU</p>
+    <p class="p2">We've added you card details</p>
+  </div>
+  <script>
+    const cardholderName = document.querySelector('.js-name-input');
+    const cardNumber = document.querySelector('.js-card-number');
+    const expDatemm = document.querySelector('.js-mm-date');
+    const expDateyy = document.querySelector('.js-yy-date');
+    const cvcNumber = document.querySelector('.js-cvc');
+    const submit = document.querySelector('.js-button');
+    let form = document.querySelector('.js-form');
+    let thankYou = document.querySelector('.thanks');
+
+    submit.addEventListener('click', (event) =>{
+      event.preventDefault();
+
+      //card holder name validation
+      if(cardholderName.value ===''){
+        error(cardholderName, "can't be blank");
+      }else {
+        success(cardholderName);
+      }
+
+      // card number validations
+      if(cardNumber.value === ''){
+        error(cardNumber, "can't be blank");
+      }else {
+        success(cardNumber);
+      }
+
+      //card date validation 
+      if(expDatemm.value === ''){
+        error(expDatemm, "can't be blank");
+      }else{
+        success(expDatemm);
+      }
+      if(expDateyy.value === ''){
+        error(expDateyy, "can't be blank");
+      }else {
+        success(expDateyy);
+      }
+
+      // card cvc validation 
+      if(cvcNumber.value === ''){
+        error(cvcNumber, "can't be blank");
+      }else {
+        success(cvcNumber);
+      }
+
+      // thank you 
+      if(cardholderName.value && cardNumber.value && expDatemm.value && expDateyy.value && cvcNumber.value){
+        thankYou.classList.remove('thanks');
+        thankYou.classList.add('playMe');
+        form.innerHTML = thankYou.value;
+
+        document.querySelector('.js-card-name').innerHTML = cardholderName.value;
+        document.querySelector('.card-number').innerHTML = cardNumber.value;
+        document.querySelector('.card-date').innerHTML = expDatemm.value;
+        document.querySelector('.yy').innerHTML = expDateyy.value;
+        document.querySelector('.card-cvc').innerHTML = cvcNumber.value;
+
+      }
+
+    })
+    
+    function error(element, msg){
+      element.style.border = '3px red solid';
+      const parent = element.parentElement;
+      const p = parent.querySelector('p');
+      p.textContent = msg;
+      p.style.visibility = 'visible';
+      p.style.color = 'red';
+    }
+
+    function success(element){
+      element.style.border = '3px purple solid';
+      const parent = element.parentElement;
+      const p = parent.querySelector('p');
+      p.style.visibility = 'hidden';
+    }
+
+  </script>
+  <!-- Completed state start -->
+<!--
+  Thank you!
+  We've added your card details
+  Continue -->
+<!--
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">ASHRAFU RASHID ISSA</a>.
+  </div>-->
+</body>
+</html>
